@@ -1,1 +1,1 @@
-web: gunicorn csvplaneks.wsgi
+web: gunicorn dummy_gen.wsgi
