@@ -26,7 +26,7 @@ SECRET_KEY = 'jia##835py59x%pa5m16myw_e9vn32&uo&%ht!rworub^yeoh$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['csvplaneks.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['planeks-csv-generator.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -49,9 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'planeks.urls'
@@ -119,19 +116,12 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+CELERY_BROKER_URL = 'redis://:pd48e1c97a7c221b5b6bd2ea80bfe75a7260405f7edb186f35c6530ba71d2c623@ec2-54-208-118-140.compute-1.amazonaws.com:10709'
 
-#for static
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TAST_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'django-db'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -146,17 +136,3 @@ MEDIAFILES_DIRS = [
     os.path.join(BASE_DIR, "media")
 ]
 
-
-
-CELERY_BROKER_URL = 'redis://:pd48e1c97a7c221b5b6bd2ea80bfe75a7260405f7edb186f35c6530ba71d2c623@ec2-54-208-118-140.compute-1.amazonaws.com:10709'
-
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TAST_SERIALIZER = 'json'
-CELERY_RESULT_BACKEND = 'django-db'
-
-# CACHES = {
-#     "default": {
-#          "BACKEND": "redis_cache.RedisCache",
-#          "LOCATION": os.environ.get('REDIS_URL'),
-#     }
-# }
