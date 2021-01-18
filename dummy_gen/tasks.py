@@ -36,10 +36,10 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
     fake1 = Faker('en_GB')   # adding phone number
 
     # testing folder
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    filename_ = os.path.join(BASE_DIR, 'media\\') + filename
+    # BASE_DIR = Path(__file__).resolve().parent.parent
+    # filename_ = os.path.join(BASE_DIR, 'media\\') + filename
 
-    # filename_ = MEDIA_ROOT
+    filename_ = MEDIA_ROOT
 
     # writing rows
     with open(filename_, 'w') as csvFile:
