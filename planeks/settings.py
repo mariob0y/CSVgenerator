@@ -154,9 +154,9 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TAST_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'django-db'
 
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": os.environ.get('REDIS_URL'),
-    }
-}
+# CACHES = {
+#     "default": {
+#          "BACKEND": "redis_cache.RedisCache",
+#          "LOCATION": os.environ.get('REDIS_URL'),
+#     }
+# }
