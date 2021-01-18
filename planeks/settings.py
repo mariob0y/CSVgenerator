@@ -26,7 +26,7 @@ SECRET_KEY = 'jia##835py59x%pa5m16myw_e9vn32&uo&%ht!rworub^yeoh$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['planeks-csv-generator.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['csvplaneks.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
