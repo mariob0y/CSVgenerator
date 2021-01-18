@@ -1,1 +1,1 @@
-web: gunicorn dummy_gen.wsgi
+web: gunicorn planeks.wsgi
