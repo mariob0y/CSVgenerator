@@ -37,7 +37,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
 
     # testing folder
     BASE_DIR = Path(__file__).resolve().parent.parent
-    filename_ = os.path.join(BASE_DIR, 'media/') + filename
+    filename_ = 'media/' + filename
 
   
 
