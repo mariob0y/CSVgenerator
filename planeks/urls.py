@@ -25,6 +25,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('/', scheme_list),
     path('admin/', admin.site.urls),
     path('do/<int:id>/', login_required(do)),
     path('create/', login_required(scheme_create)),
