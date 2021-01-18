@@ -120,25 +120,15 @@ USE_TZ = True
 
 
 
-r = redis.from_url(os.environ.get("REDIS_URL"))
-BROKER_URL = redis.from_url(os.environ.get("REDIS_URL"))
-CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Canada/Eastern'
+CELERY_BROKER_URL = 'redis://:pd48e1c97a7c221b5b6bd2ea80bfe75a7260405f7edb186f35c6530ba71d2c623@ec2-54-208-118-140.compute-1.amazonaws.com:10709'	r = redis.from_url(os.environ.get("REDIS_URL"))
 
-redis_url = urlparse.urlparse(os.environ.get('REDIS_URL'))
-CACHES = {
-"default": {
-"BACKEND": "redis_cache.RedisCache",
-"LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-"OPTIONS": {
-"PASSWORD": redis_url.password,
-"DB": 0,
-}
-}
-}
+BROKER_URL = redis.from_url(os.environ.get("REDIS_URL"))
+CELERY_ACCEPT_CONTENT = ['json']	CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
+CELERY_TAST_SERIALIZER = 'json'	CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_BACKEND = 'django-db'
+
+
+
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
