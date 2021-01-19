@@ -60,15 +60,15 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             userId = Fname + "." + Lname + domain_name
 
             gen_dict = {
-                    "email": userId.encode('utf-8').replace(b"\n", b""),
-                    "name": fake.name().encode('utf-8').replace(b"\n", b""),
-                    "date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
-                    'job': fake.job().encode('utf-8').replace(b"\n", b""),
-                    'company': fake.company().encode('utf-8').replace(b"\n", b""),
-                    "phone": fake1.phone_number(),
-                    "address": fake.address().encode('utf-8').replace(b"\n", b""),
-                    "city": fake.city().encode('utf-8').replace(b"\n", b""),
-                    "country": fake.country().encode('utf-8').replace(b"\n", b""),
+                    "email": str(userId).encode('utf-8').replace(b"\n", b""),
+                    "name": str(fake).name().encode('utf-8').replace(b"\n", b""),
+                    "date": str(fake).date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)).encode('utf-8').replace(b"\n", b""),
+                    'job': str(fake).job().encode('utf-8').replace(b"\n", b""),
+                    'company': str(fake).company().encode('utf-8').replace(b"\n", b""),
+                    "phone": str(fake1).phone_number().encode('utf-8').replace(b"\n", b""),
+                    "address": str(fake).address().encode('utf-8').replace(b"\n", b""),
+                    "city": str(fake).city().encode('utf-8').replace(b"\n", b""),
+                    "country": str(fake).country().encode('utf-8').replace(b"\n", b""),
                     }
 
             filtered_dict = {}
