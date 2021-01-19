@@ -79,7 +79,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             
 
 
-        scheme.upload.save(filename_)
+        scheme.upload.save(filename_,ContentFile(filename_))
 
     # adding created file to scheme
 
