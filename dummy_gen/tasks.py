@@ -88,7 +88,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                   aws_access_key_id=AWS_ACCESS_KEY_ID,
                   aws_secret_access_key=AWS_SECRET_ACCESS_KEY, )
         
-        s3.upload_file(filename_, AWS_STORAGE_BUCKET_NAME, '%s/%s' % ('media', file_name))
+        s3.upload_file(filename_, AWS_STORAGE_BUCKET_NAME, '%s/%s' % ('media', filename_))
 
     # adding created file to scheme
 
