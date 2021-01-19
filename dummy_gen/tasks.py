@@ -76,7 +76,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                 if k in columns:
                     filtered_dict[k] = v
 
-            writer.writerow(filtered_dict)
+            writer.writerow(filtered_dict).encode('utf-8').replace(b"\n", b""),
             
 
 
