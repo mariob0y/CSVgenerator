@@ -80,7 +80,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             writer.writerow(filtered_dict)
             
 
-
+        # Saving at S3 (comment this section for saving locally)
         scheme.upload = 'media/' + filename_
         scheme.save()
         
@@ -90,10 +90,6 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
         
         s3.upload_file(filename_, AWS_STORAGE_BUCKET_NAME, '%s/%s' % ('media', filename_))
 
-    # adding created file to scheme
 
-#     scheme.upload = filename_
-#     scheme.save()
-#     print(scheme.upload)
 
     return filename + ' have been generated!'
