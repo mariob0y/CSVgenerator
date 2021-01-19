@@ -60,15 +60,15 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             userId = Fname + "." + Lname + domain_name
 
             gen_dict = {
-                    "email": userId.encode('utf-8'),
-                    "name": fake.name().encode('utf-8'),
+                    "email": userId.encode('utf-8').replace(b"\n", b""),
+                    "name": fake.name().encode('utf-8').replace(b"\n", b""),
                     "date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
-                    'job': fake.job().encode('utf-8'),
-                    'company': fake.company().encode('utf-8'),
+                    'job': fake.job().encode('utf-8').replace(b"\n", b""),
+                    'company': fake.company().encode('utf-8').replace(b"\n", b""),
                     "phone": fake1.phone_number(),
-                    "address": fake.address().encode('utf-8'),
-                    "city": fake.city().encode('utf-8'),
-                    "country": fake.country().encode('utf-8'),
+                    "address": fake.address().encode('utf-8').replace(b"\n", b""),
+                    "city": fake.city().encode('utf-8').replace(b"\n", b""),
+                    "country": fake.country().encode('utf-8').replace(b"\n", b""),
                     }
 
             filtered_dict = {}
@@ -76,7 +76,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                 if k in columns:
                     filtered_dict[k] = v
 
-            writer.writerow(filtered_dict).replace(b"\n", b"")
+            writer.writerow(filtered_dict)
             
 
 
