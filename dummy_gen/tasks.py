@@ -76,11 +76,15 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                     filtered_dict[k] = v
 
             writer.writerow(filtered_dict)
+            
+
+
+        scheme.upload.save(filename_)
 
     # adding created file to scheme
 
-    scheme.upload = filename_
-    scheme.save()
-    print(scheme.upload)
+#     scheme.upload = filename_
+#     scheme.save()
+#     print(scheme.upload)
 
     return filename + ' have been generated!'
