@@ -14,6 +14,7 @@ from planeks.settings import *
 from celery_progress.backend import ProgressRecorder
 
 from time import sleep
+from django.core.files.base import ContentFile
 
 
 @shared_task(bind=True)
