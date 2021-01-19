@@ -36,8 +36,8 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
     fake1 = Faker('en_GB')   # adding phone number
 
     # testing folder
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    filename_ = filename
+    # BASE_DIR = Path(__file__).resolve().parent.parent
+    filename_ = DEFAULT_FILE_STORAGE + filename
 
   
 
