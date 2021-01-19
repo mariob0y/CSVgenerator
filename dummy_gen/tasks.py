@@ -81,7 +81,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             
 
 
-        scheme.upload = filename_
+        scheme.upload = 'media/' + filename_
         scheme.save()
         
         s3 = boto3.client('s3',
