@@ -60,15 +60,15 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             userId = Fname + "." + Lname + domain_name
 
             gen_dict = {
-                    "email": userId,
-                    "name": fake.name(),
+                    "email": userId.encode('utf-8'),
+                    "name": fake.name().encode('utf-8'),
                     "date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
-                    'job': fake.job(),
-                    'company': fake.company(),
+                    'job': fake.job().encode('utf-8'),
+                    'company': fake.company().encode('utf-8'),
                     "phone": fake1.phone_number(),
-                    "address": fake.address(),
-                    "city": fake.city(),
-                    "country": fake.country(),
+                    "address": fake.address().encode('utf-8'),
+                    "city": fake.city().encode('utf-8'),
+                    "country": fake.country().encode('utf-8'),
                     }
 
             filtered_dict = {}
@@ -76,7 +76,7 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                 if k in columns:
                     filtered_dict[k] = v
 
-            writer.writerow(filtered_dict).encode('utf-8')
+            writer.writerow(filtered_dict)
             
 
 
