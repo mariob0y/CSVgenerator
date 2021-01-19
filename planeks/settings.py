@@ -139,11 +139,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
-# MEDIAFILES_DIRS = [
-#     os.path.join(BASE_DIR, "media")
-# ]
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, "media")
+]
 
 # AWS S3 SETTINGS
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -152,6 +152,10 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_URL = os.environ.get('AWS_URL')
 AWS_DEFAULT_ACL = None
 AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_QUERYSTRING_AUTH = True
+AWS_S3_REGION_NAME = 'us-east-2'
+
 
 MEDIA_URL = AWS_URL + '/media/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
