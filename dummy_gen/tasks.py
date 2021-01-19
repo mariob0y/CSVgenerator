@@ -15,6 +15,7 @@ from celery_progress.backend import ProgressRecorder
 
 from time import sleep
 from django.core.files.base import ContentFile
+import boto3
 
 
 @shared_task(bind=True)
@@ -60,15 +61,15 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
             userId = Fname + "." + Lname + domain_name
 
             gen_dict = {
-                    "email": str(userId).encode('utf-8').replace(b"\n", b""),
-                    "name": str(fake.name()).encode('utf-8').replace(b"\n", b""),
-                    "date": str(fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1))).encode('utf-8').replace(b"\n", b""),
-                    'job': str(fake.job()).encode('utf-8').replace(b"\n", b""),
-                    'company': str(fake.company()).encode('utf-8').replace(b"\n", b""),
-                    "phone": str(fake1.phone_number()).encode('utf-8').replace(b"\n", b""),
-                    "address": str(fake.address()).encode('utf-8').replace(b"\n", b""),
-                    "city": str(fake.city()).encode('utf-8').replace(b"\n", b""),
-                    "country": str(fake.country()).encode('utf-8').replace(b"\n", b""),
+                    "email": userId,
+                    "name": fake.name(),
+                    "date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
+                    'job': fake.job(),
+                    'company': fake.company(),
+                    "phone": fake1.phone_number(),
+                    "address": fake.address(),
+                    "city": fake.city(),
+                    "country": fake.country(),
                     }
 
             filtered_dict = {}
@@ -76,11 +77,18 @@ def datagenerate(self, records, columns, names, filename, scheme_id):
                 if k in columns:
                     filtered_dict[k] = v
 
-            writer.writerow(filtered_dict).encode('utf-8').replace(b"\n", b""),
+            writer.writerow(filtered_dict)
             
 
 
-        scheme.upload.save(filename_,ContentFile(filename_))
+        scheme.upload = filename_
+        scheme.save()
+        
+        s3 = boto3.client('s3',
+                  aws_access_key_id=AWS_ACCESS_KEY_ID,
+                  aws_secret_access_key=AWS_SECRET_ACCESS_KEY, )
+        
+        s3.upload_file(filename_, AWS_STORAGE_BUCKET_NAME))
 
     # adding created file to scheme
 
