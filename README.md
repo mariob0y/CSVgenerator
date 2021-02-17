@@ -12,9 +12,9 @@ Password: test
 
 ## Description
 
-Task is to build an online service for generating CSV files with fake (dummy)
-data using Python and Django.   
-Details of task you may check [here](Test_task.pdf)
+Online service for generating CSV files with fake (dummy)
+data, developed with Python and Django.   
+
 
 App lets you create .CSV file with data of choice. You may choose type of data, text of headers, order of columns and number of rows.   
 This scheme may be later generated into .CSV file and downloaded.  
