@@ -1,12 +1,12 @@
 # Fake Data CSV Generator (Django, Celery)
-Test task for Planeks
+Web generator of CSV files with fake data
 
 ## Demo
 
-Live demo of project you may check here - https://csvplaneks.herokuapp.com/
+Live demo of project you may check here - https://csvfaker.herokuapp.com/
 
-Login: planeks  
-Password: testtask  
+Login: test  
+Password: test    
 
 
 
